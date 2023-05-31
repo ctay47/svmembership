@@ -12,6 +12,8 @@ CREATE TABLE users (
     state VARCHAR(50),
     country VARCHAR(50),
     profile_pic VARCHAR(255),
+    occupation VARCHAR(255),
+    about_me TEXT,
     instagram_handle VARCHAR(50),
     facebook_handle VARCHAR(50),
     discord_handle VARCHAR(50),
@@ -22,6 +24,7 @@ CREATE TABLE users (
 CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
+    pic VARCHAR(255),
     description TEXT,
     date TIMESTAMP NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -36,7 +39,6 @@ CREATE TABLE messages (
 );
 
 CREATE TABLE comments (
-    id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
     message_id INTEGER REFERENCES messages(id),
     content TEXT NOT NULL,
